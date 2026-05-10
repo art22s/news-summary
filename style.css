@@ -17,7 +17,13 @@ body {
   max-width: 1000px;
   margin: 0 auto;
   padding: 12px 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 16px;
+  row-gap: 2px;
 }
+header, .stocks, footer { grid-column: 1 / -1; }
+section { break-inside: avoid; }
 header {
   display: flex;
   justify-content: space-between;
@@ -43,9 +49,10 @@ header .date { color: var(--text-secondary); font-size: 0.78rem; }
 .up { color: var(--green); }
 .down { color: var(--red); }
 
-/* Two-column sections grid */
-.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 14px; margin-bottom: 10px; }
-section { margin-bottom: 0; }
+/* Mobile: single column */
+@media (max-width: 650px) {
+  body { grid-template-columns: 1fr; padding: 8px 10px; }
+}
 section h2 {
   font-size: 0.85rem;
   font-weight: 700;
